@@ -9,21 +9,12 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-/*return [
-    '__pattern__' => [
-        'name' => '\w+',
-    ],
-    '[hello]'     => [
-        ':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],
-        ':name' => ['index/hello', ['method' => 'post']],
-    ],
 
-];*/
 
 use think\Route;
 Route::get('api/:version/banner/:id','api/:version.Banner/getBanner',[],['id'=>'\d+']);
 //http://www.test.com/api/v1/theme?ids=1,2,3
-Route::get('api/:version/theme','api/:version.Theme/getSimpleList');
+Route::get('api/:version/theme','api/:version.Theme/getSimpleList'); //获取所有专题简略信息  www.lingmeng.com/api/v1/theme?ids=1,2,3
 Route::get('api/:version/theme/:id','api/:version.Theme/getComplexOne',[],['id'=>'\d+']);
 
 //Route::get('api/:version/product/recent','api/:version.Product/getRecent');
@@ -64,5 +55,23 @@ Route::group('api/wechat',function(){
     Route::post('/delmenu','api/wechat.Index/delMenu');
     Route::post('/createmenu','api/wechat.Index/diyMenu');
     Route::get('/getmenu','api/wechat.Index/getMenu');
+});
+Route::get('api/:version/test','api/:version.Test/index');
+
+
+//vue测试
+Route::group('api/vue',function(){
+    Route::get('/get','api/v1.Vue/getInfo');
+    Route::get('/jsonp','api/v1.Vue/jsonpInfo');
+    Route::get('/delete','api/v1.Vue/deleteInfo');
+    Route::get('/newslist','api/v1.Vue/getNewsList');
+    Route::get('/newsDetail/:id','api/v1.Vue/getNewsDetail');
+    Route::get('/comment/:limit/:page','api/v1.Vue/getComment');
+    Route::get('/imageCategory','api/v1.Vue/getImageCategory');
+    Route::get('/imageCategoryContent/:id','api/v1.Vue/getImageCategoryContent');
+    Route::get('/imageContent/:id','api/v1.Vue/getImageContent');
+    Route::post('/insert','api/v1.Vue/insertInfo');
+    Route::post('/post','api/v1.Vue/postInfo');
+    Route::post('/saveComment','api/v1.Vue/saveComment');
 });
 
