@@ -44,8 +44,15 @@ class Product extends BaseModel
                         ->order('order', 'asc');
                 }])
             ->with('properties')
-            ->find($id);
+            ->select($id);
         return $product;
+    }
+
+    //根据前端购物车获取到的商品id查询对应商品简略信息并返回
+    public static function getCartInfo($ids){
+        /*        $product = self::with(['imgs','properties'])->find($id);*/
+        $cartData = self::select($ids);
+        return $cartData;
     }
 }
 

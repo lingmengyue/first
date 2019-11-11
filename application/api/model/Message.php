@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: 灵梦
- * Date: 2019/10/1
- * Time: 19:18
+ * Date: 2019/11/6
+ * Time: 15:30
  */
 
 namespace app\api\model;
@@ -11,7 +11,7 @@ namespace app\api\model;
 
 use think\Model;
 
-class ImageList extends Model
+class Message extends Model
 {
-    protected $hidden = ['id'];
+
 }

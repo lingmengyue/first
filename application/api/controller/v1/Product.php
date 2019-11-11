@@ -10,6 +10,7 @@ namespace app\api\controller\v1;
 
 
 use app\api\validate\Count;
+use app\api\validate\IDCollection;
 use app\api\validate\IDMustBePostiveInt;
 use app\lib\exception\ProductException;
 use think\Controller;
@@ -49,6 +50,16 @@ class Product extends Controller
          return $product;
      }
 
+     /*获取购物车数据*/
+    public function getCart($ids=''){
+        (new IDCollection())->goCheck();
+        $ids = explode(',',$ids);
+        $result = ProductModel::getCartInfo($ids);;
+        if(!$result){
+            throw new ProductException();
+        }
+        return $result;
+    }
      //删除商品接口
      public function deleteOne($id){
 

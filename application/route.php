@@ -24,6 +24,7 @@ Route::group('api/:version/product',function(){
     Route::get('/recent','api/:version.Product/getRecent');
     Route::get('/by_category','api/:version.Product/getAllInCategory');
     Route::get('/:id','api/:version.Product/getOne',[],['id'=>'\d+']);
+    Route::get('/cart','api/:version.Product/getCart');
 });
 Route::get('api/:version/category/all','api/:version.Category/getAllCategory');
 Route::post('api/:version/token/user','api/:version.Token/getToken');
@@ -74,4 +75,11 @@ Route::group('api/vue',function(){
     Route::post('/post','api/v1.Vue/postInfo');
     Route::post('/saveComment','api/v1.Vue/saveComment');
 });
+
+Route::post('api/:version/contact','api/:version.Contact/index');
+
+Route::get('api/:version/test','api/:version.Contact/test');
+Route::get('api/:version/redisTest','api/:version.Contact/redisTest');
+
+Route::get('api/:version/sendMail','api/:version.Mail/sendMail');
 
